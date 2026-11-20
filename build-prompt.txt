@@ -1,0 +1,23 @@
+Build a make.fun entry for the bounty "news-image-20261120": a program that writes ONE image (entry.png) summing up Friday 20 November 2026's world news, to /output/entry.png. Work entirely inside this repository.
+
+Rules (from RULES.txt): PNG or JPEG named entry.png, max 1024x1024 pixels, max 1 MiB. The program runs offline with no network and must be deterministic. Deliverable: main.py (Python 3.13) at repo root that writes/copies entry.png to the output dir ($MAKEFUN_OUTPUT_DIR or /output). Repo already has a starter main.ts — delete it and use main.py instead. A judging AI ranks: (1) it clearly names the day 20 November 2026 and shows that day's real events, (2) breadth across regions/fields, (3) legible and readable (short clear labels), (4) faithful reporting, no speculation, (5) craft — one clean composition, legible even small, no garbled text.
+
+Real verified news of Friday 20 November 2026 to depict (use these, keep facts exactly as stated):
+- The Hague: International Court of Justice rules Myanmar committed genocide against the Rohingya — the first such genocide ruling of its kind (Gambia v Myanmar).
+- Shenzhen: Trump, Xi and Putin release a "peace declaration" from their historic first trilateral summit, reaffirming nuclear war should never be fought.
+- Kyiv: Russian overnight strikes kill three, injure nine, and disrupt power supply.
+- Antalya, Turkey: UN climate talks COP31 wrap up as nations demand fossil-fuel cuts; negotiators seek concrete transition commitments.
+- Global AI sell-off: world markets react as tech stocks slide.
+- Strait of Hormuz: Iran keeps up unrelenting attacks on ships; attack rate more than doubled vs the previous seven months.
+- EU & UK agree a youth mobility scheme letting 100,000 young Europeans take a route back to the UK.
+- New York: collapse of building 1321 becomes a symbol of the city's cracks; families seek justice.
+- India: Cyclone Akvan approaches the coast, railways cancel 10 train services; Modi tells industry to respond to tax relief with hiring ("Where are the jobs?").
+
+APPROACH: write gen_news.py — a Pillow (PIL) script that renders a 1024x1024 editorial "world front page" poster, fully deterministic (no random module, no datetime in the rendering), fonts only from /usr/share/fonts/truetype/dejavu/. Design: bold masthead "THE WORLD - FRIDAY 20 NOVEMBER 2026", a stylized globe, and 6-8 clearly labelled story panels (each headline 3-8 words, short), clean flat colors, generous margins, strong typographic hierarchy. Verify with python3 gen_news.py that entry.png is written and is under 1 MiB (optimize if larger). Write main.py that copies entry.png to $MAKEFUN_OUTPUT_DIR (default /output).
+
+WORKFLOW (strict, do not skip):
+1. First write gen_news.py yourself: a first substantial complete version (at least 200 lines you author).
+2. Then REVISE gen_news.py at least twice more in separate follow-up steps, each a real edit of the file: revision 1 = improve composition/labels/layout (check nothing overflows, dates and names spelled exactly right); revision 2 = polish (spacing, contrast, small-size legibility) and re-verify output size under 1 MiB.
+3. Write main.py yourself too. Never clone, download or copy code from anywhere.
+4. Verify: run MAKEFUN_OUTPUT_DIR=/tmp/nitest20 python3 main.py and confirm /tmp/nitest20/entry.png exists, is a valid PNG, 1024x1024, under 1 MiB. Show the final checks.
+5. Keep everything inside this repository directory. Do not touch .git or .makefun.
